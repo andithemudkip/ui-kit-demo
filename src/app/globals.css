@@ -1,26 +1,82 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import "@campnetwork/ui-kit/styles.css";
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Font families */
+  --font-sans: "Satoshi", "Open Sans", sans-serif;
+  --font-geist: "Geist", "Satoshi", sans-serif;
+
+  /* Pumpkin palette */
+  --color-pumpkin-50: #fff9ec;
+  --color-pumpkin-100: #fff1d3;
+  --color-pumpkin-200: #ffdea5;
+  --color-pumpkin-300: #ffc66d;
+  --color-pumpkin-400: #ffa232;
+  --color-pumpkin-500: #ff850a;
+  --color-pumpkin-600: #ff6d01;
+  --color-pumpkin-700: #cc4e02;
+  --color-pumpkin-800: #a13c0b;
+  --color-pumpkin-900: #82340c;
+  --color-pumpkin-950: #461704;
+
+  /* Warm palette */
+  --color-warm-100: #ff6d01;
+  --color-warm-200: #ff9160;
+  --color-warm-300: #daaf50;
+  --color-warm-400: #f1ce5b;
+  --color-warm-500: #cc4305;
+  --color-warm-600: #9a3404;
+
+  /* Cold palette */
+  --color-cold-100: #43b7c4;
+  --color-cold-200: #2c929e;
+  --color-cold-300: #1f6f7a;
+  --color-cold-400: #194147;
+
+  /* Neutral palette */
+  --color-neutral-50: #ffffff;
+  --color-neutral-100: #f7f7f7;
+  --color-neutral-200: #e1e1e1;
+  --color-neutral-300: #cfcfcf;
+  --color-neutral-400: #b1b1b1;
+  --color-neutral-500: #8d8d8d;
+  --color-neutral-600: #6f6f6f;
+  --color-neutral-700: #525252;
+  --color-neutral-800: #393939;
+  --color-neutral-900: #262626;
+  --color-neutral-925: #212121;
+  --color-neutral-950: #111111;
+
+  /* Border colors */
+  --color-border: #d7d5d3;
+  --color-border-light: #cfcfcf;
+
+  /* Surface colors */
+  --color-surface: #ffffff;
+  --color-surface-alt: #e6e2df;
+  --color-surface-muted: #f9f7f4;
+  --color-surface-highlight: #fff5f0;
+
+  /* Text colors */
+  --color-text: #1a1a1a;
+  --color-text-secondary: #8c8c8c;
+
+  /* Animation */
+  --animate-wobble: wobble 1.2s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes wobble {
+  0%,
+  100% {
+    transform: translateX(-95%);
+  }
+  50% {
+    transform: translateX(95%);
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-surface-muted);
+  color: var(--color-text);
+  font-family: var(--font-sans);
 }
