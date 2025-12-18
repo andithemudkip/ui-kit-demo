@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useForm, FormProvider, Controller, FieldPath } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import {
+  Form,
+  FormField,
   FormItem,
   FormLabel,
   FormControl,
@@ -12,6 +14,8 @@ import {
 import { Input } from "@campnetwork/ui-kit/input";
 import { Button } from "@campnetwork/ui-kit/button";
 import { toast } from "@campnetwork/ui-kit/toast";
+import { Switch } from "@campnetwork/ui-kit/switch";
+import { Slider } from "@campnetwork/ui-kit/slider";
 
 interface FormValues {
   username: string;
@@ -62,12 +66,12 @@ export default function FormsPage() {
             Registration Form
           </h2>
           <div className="max-w-md">
-            <FormProvider {...form}>
+            <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-6"
               >
-                <Controller
+                <FormField
                   control={form.control}
                   name="username"
                   rules={{
@@ -77,29 +81,21 @@ export default function FormsPage() {
                       message: "Username must be at least 3 characters",
                     },
                   }}
-                  render={({ field, fieldState }) => (
-                    <div className="space-y-2">
-                      <label
-                        className={`text-sm font-semibold uppercase font-geist ${
-                          fieldState.error ? "text-red-500" : ""
-                        }`}
-                      >
-                        Username
-                      </label>
-                      <Input placeholder="johndoe" {...field} />
-                      <p className="text-xs text-text-secondary">
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Username</FormLabel>
+                      <FormControl>
+                        <Input placeholder="johndoe" {...field} />
+                      </FormControl>
+                      <FormDescription>
                         This will be your public display name.
-                      </p>
-                      {fieldState.error && (
-                        <p className="text-xs text-red-500">
-                          {fieldState.error.message}
-                        </p>
-                      )}
-                    </div>
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
                   )}
                 />
 
-                <Controller
+                <FormField
                   control={form.control}
                   name="email"
                   rules={{
@@ -109,33 +105,25 @@ export default function FormsPage() {
                       message: "Invalid email address",
                     },
                   }}
-                  render={({ field, fieldState }) => (
-                    <div className="space-y-2">
-                      <label
-                        className={`text-sm font-semibold uppercase font-geist ${
-                          fieldState.error ? "text-red-500" : ""
-                        }`}
-                      >
-                        Email
-                      </label>
-                      <Input
-                        type="email"
-                        placeholder="you@example.com"
-                        {...field}
-                      />
-                      <p className="text-xs text-text-secondary">
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="email"
+                          placeholder="you@example.com"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormDescription>
                         We&apos;ll never share your email with anyone.
-                      </p>
-                      {fieldState.error && (
-                        <p className="text-xs text-red-500">
-                          {fieldState.error.message}
-                        </p>
-                      )}
-                    </div>
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
                   )}
                 />
 
-                <Controller
+                <FormField
                   control={form.control}
                   name="password"
                   rules={{
@@ -145,58 +133,42 @@ export default function FormsPage() {
                       message: "Password must be at least 8 characters",
                     },
                   }}
-                  render={({ field, fieldState }) => (
-                    <div className="space-y-2">
-                      <label
-                        className={`text-sm font-semibold uppercase font-geist ${
-                          fieldState.error ? "text-red-500" : ""
-                        }`}
-                      >
-                        Password
-                      </label>
-                      <Input
-                        type="password"
-                        placeholder="••••••••"
-                        {...field}
-                      />
-                      <p className="text-xs text-text-secondary">
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Password</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="password"
+                          placeholder="••••••••"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormDescription>
                         Must be at least 8 characters long.
-                      </p>
-                      {fieldState.error && (
-                        <p className="text-xs text-red-500">
-                          {fieldState.error.message}
-                        </p>
-                      )}
-                    </div>
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
                   )}
                 />
 
-                <Controller
+                <FormField
                   control={form.control}
                   name="confirmPassword"
                   rules={{
                     required: "Please confirm your password",
                   }}
-                  render={({ field, fieldState }) => (
-                    <div className="space-y-2">
-                      <label
-                        className={`text-sm font-semibold uppercase font-geist ${
-                          fieldState.error ? "text-red-500" : ""
-                        }`}
-                      >
-                        Confirm Password
-                      </label>
-                      <Input
-                        type="password"
-                        placeholder="••••••••"
-                        {...field}
-                      />
-                      {fieldState.error && (
-                        <p className="text-xs text-red-500">
-                          {fieldState.error.message}
-                        </p>
-                      )}
-                    </div>
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Confirm Password</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="password"
+                          placeholder="••••••••"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
                   )}
                 />
 
@@ -211,7 +183,7 @@ export default function FormsPage() {
                   </Button>
                 </div>
               </form>
-            </FormProvider>
+            </Form>
           </div>
         </section>
 

@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import "@campnetwork/ui-kit/styles.css";
+@import "tailwindcss";
 
 @theme inline {
   /* Font families */
