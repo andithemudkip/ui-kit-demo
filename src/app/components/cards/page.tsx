@@ -35,7 +35,7 @@ export default function CardsPage() {
           <h2 className="text-lg font-semibold uppercase font-geist mb-4 text-text-secondary">
             Basic Card
           </h2>
-          <Card className="max-w-md">
+          <Card className="max-w-md p-6">
             <CardHeader>
               <CardTitle>Card Title</CardTitle>
               <CardDescription>
@@ -74,7 +74,7 @@ export default function CardsPage() {
           <h2 className="text-lg font-semibold uppercase font-geist mb-4 text-text-secondary">
             Custom Corner Color
           </h2>
-          <Card className="max-w-md" cornerColor="#FF6D01">
+          <Card className="max-w-md p-6" cornerColor="#FF6D01">
             <CardHeader>
               <CardTitle>Orange Corners</CardTitle>
               <CardDescription>
